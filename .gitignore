@@ -1,0 +1,8 @@
+# 빌드 결과와 실행할 때마다 새로 생기는 파일
+target/
+
+# IDE와 운영체제가 만드는 파일
+.idea/
+*.iml
+.vscode/
+.DS_Store

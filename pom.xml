@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>samplemall</groupId>
+  <artifactId>checkout-price-test-automation</artifactId>
+  <version>1.0.0</version>
+  <name>샘플몰 주문서 결제 금액 테스트 자동화</name>
+
+  <properties>
+    <!-- 자바 17 문법까지 쓴다 (record, switch 식, 텍스트 블록) -->
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <playwright.version>1.64.0</playwright.version>
+    <junit.version>6.1.3</junit.version>
+    <gson.version>2.15.0</gson.version>
+  </properties>
+
+  <dependencies>
+    <!-- Playwright: 브라우저를 열고 화면을 누르고 읽는 도구 -->
+    <dependency>
+      <groupId>com.microsoft.playwright</groupId>
+      <artifactId>playwright</artifactId>
+      <version>${playwright.version}</version>
+    </dependency>
+
+    <!-- Gson: 자바 객체를 JSON으로 바꾸는 도구 (테스트 API를 부를 때 쓴다) -->
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson.version}</version>
+    </dependency>
+
+    <!-- JUnit: 테스트를 실행하고 통과·실패를 판정하는 도구 -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.16.0</version>
+      </plugin>
+
+      <!-- mvn test 가 테스트를 실행할 때 쓰는 플러그인 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.6.1</version>
+        <configuration>
+          <environmentVariables>
+            <!-- 이 도구는 크로미움만 쓴다. 실행할 때마다 다른 브라우저까지 내려받지 않게 막는다. -->
+            <PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD>1</PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD>
+          </environmentVariables>
+        </configuration>
+      </plugin>
+
+      <!-- 처음 한 번 크로미움을 내려받는 명령(README 참고)에 쓰는 플러그인 -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.5.0</version>
+      </plugin>
+    </plugins>
+  </build>
+</project>
