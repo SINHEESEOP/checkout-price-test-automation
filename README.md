@@ -147,4 +147,4 @@ mvn test -Dtest=PolicyExampleUiTest -Dheadless=false -Dslowmo=300
 
 ## AI 활용
 
-TC 초안과 자동화 코드 작성에 AI 코딩 도구(Claude Code)를 사용했습니다. 테스트 대상과 범위는 실무 경험을 바탕으로 직접 정했습니다.
+TC 초안과 자동화 코드 작성에 AI 코딩 어시스턴트를 사용했습니다. 테스트 대상과 범위는 실무 경험을 바탕으로 직접 정했습니다.
